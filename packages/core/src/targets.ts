@@ -19,6 +19,7 @@ import { componentToStencil as stencil } from './generators/stencil';
 import { componentToQwik as qwik } from './generators/qwik';
 import { componentToMarko as marko } from './generators/marko';
 import { componentToLit as lit } from './generators/lit';
+import { componentToLWC as lwc} from './generators/lwc'
 
 export const builder = componentToBuilder;
 
@@ -43,4 +44,5 @@ export const targets = {
   marko,
   preact,
   lit,
+  lwc
 } as const;

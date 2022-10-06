@@ -23,6 +23,7 @@ import {
   parseJsx,
   componentToVue2,
   componentToVue3,
+  componentToLWC
 } from '@builder.io/mitosis';
 import {
   Button,
@@ -380,6 +381,8 @@ export default function Fiddle() {
                 plugins,
                 ...commonOptions,
               })({ component: json })
+            : state.outputTab === 'lwc'
+            ? componentToLWC()({component: json})
             : // TODO: add qwik support back again
             // : state.outputTab === 'qwik'
             // ? (
@@ -928,6 +931,7 @@ export default function Fiddle() {
                   }
                   value="react"
                 />
+                <Tab label={<TabLabelWithIcon label="LWC" />} value="lwc" />
                 <Tab label={<TabLabelWithIcon label="Qwik" />} value="qwik" />
                 <Tab label={<TabLabelWithIcon label="Angular" />} value="angular" />
                 <Tab label={<TabLabelWithIcon label="Svelte" />} value="svelte" />
@@ -1268,6 +1272,7 @@ export default function Fiddle() {
               </div>
               <Divider />
             </Show>
+            
             <div css={{ flexGrow: 1 }}>
               <div css={{ paddingTop: 15, height: '100%' }}>
                 <MonacoEditor
